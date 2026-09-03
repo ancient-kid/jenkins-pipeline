@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building Python application...'
+                echo 'Building Python application'
                 bat 'python -m py_compile app.py'
             }
         }
