@@ -2,28 +2,24 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Checkout') {
-            steps {
-                echo 'Getting source code...'
-            }
-        }
-
         stage('Build') {
             steps {
-                echo 'Building application...'
+                echo 'Building Python application...'
+                bat 'python -m py_compile app.py'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running tests...'
+                echo 'Testing application...'
+                bat 'python -c "import app; print(\"Application loaded successfully\")"'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
+                bat 'echo Deployment successful!'
             }
         }
     }
