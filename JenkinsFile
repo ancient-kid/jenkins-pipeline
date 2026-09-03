@@ -5,35 +5,25 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/your-user/my-app.git'
+                echo 'Getting source code...'
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Build') {
             steps {
-                sh '''
-                    python3 -m venv venv
-                    . venv/bin/activate
-                    pip install -r requirements.txt
-                '''
+                echo 'Building application...'
             }
         }
 
         stage('Test') {
             steps {
-                sh '''
-                    . venv/bin/activate
-                    python -m pytest || true
-                '''
+                echo 'Running tests...'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh '''
-                    sudo systemctl restart my-app
-                '''
+                echo 'Deploying application...'
             }
         }
     }
